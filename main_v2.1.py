@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-import pandas as pd
 import csv
-from time import sleep
+import time
 import sys
 
+# start = time.no
 path_tsv = sys.argv[1]
 output_name = sys.argv[2]
 
@@ -77,7 +77,7 @@ for membro in arrFinal:
 
     if max_keys:
         if max_keys[0] == 'nada':
-            membrofinal['AC1'] = 'Nao participou de nenhuma'
+            membrofinal['AC1'] = ''
             membrofinal['AC2'] = ''
             membrofinal['AC3'] = ''
         else:
