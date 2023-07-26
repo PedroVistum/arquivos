@@ -4,7 +4,9 @@ import csv
 import time
 import sys
 
-# start = time.no
+
+start = time.time()
+
 path_tsv = sys.argv[1]
 output_name = sys.argv[2]
 
@@ -102,6 +104,7 @@ try:
         writer = csv.DictWriter(tsv_file, delimiter="\t", fieldnames=field_names)
         writer.writeheader()
         writer.writerows(arrFinalFinal)
+    print(f"O codigo rodou em {round(time.time() - start, 2)} segundos")
 except PermissionError:
     print(f"Permissão negada para criar o arquivo {output_name}.")
     sys.exit(1)
