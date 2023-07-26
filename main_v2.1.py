@@ -5,7 +5,8 @@ import csv
 from time import sleep
 import sys
 
-path_tsv = 'matriz_exa_k100.tsv'
+path_tsv = sys.argv[1]
+output_name = sys.argv[2]
 
 # Check if file exists
 try:
@@ -93,7 +94,7 @@ for membro in arrFinal:
 
     arrFinalFinal.append(membrofinal)
 
-output_name = "output.tsv"
+
 
 try:
     field_names = arrFinalFinal[0].keys()
