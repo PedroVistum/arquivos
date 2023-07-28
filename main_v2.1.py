@@ -5,10 +5,19 @@ import time
 import sys
 
 
-start = time.time()
-
 path_tsv = sys.argv[1]
+
+if path_tsv.split('.')[1] != 'tsv':
+    print("O input não é .tsv")
+    sys.exit(1)
+
 output_name = sys.argv[2]
+
+if output_name.split('.')[1] != 'tsv':
+    print("O output não é .tsv")
+    sys.exit(1)
+    
+start = time.time()
 
 # Check if file exists
 try:
@@ -20,24 +29,24 @@ try:
             d[i] = 0
         arrFinal = []
         for row in rd:
-            dictionary_of_ACindexEValor = {'nome': None}
             if rd.line_num == 1:
                 continue
+            dictionary_of_ACindexEValor = {'nome': row[0]}
             for i in range(1, len(row)):
                 try:
                     row[i] = int(row[i])
                 except ValueError:
-                    print(f"Valor não inteiro {row[i]} não pode ser convertido em inteiro. Pulando o valor.")
+                    print(f"Valor não inteiro {row[i]} não pode ser convertido em numero. Pulando o valor.")
                     continue
             counter = 0
             zeroes = 0
             for i in row:
-                
-                if type(row[counter]) != int:
-                    dictionary_of_ACindexEValor['nome'] = i
+                if counter == 0:
+                    pass
+                # if type(row[counter]) != int:
+                #     continue
                 elif i >= 1:
                     dictionary_of_ACindexEValor[keyList[counter]] = i
-                    
                 elif i == 0:
                     zeroes += 1
                 
