@@ -6,7 +6,7 @@ import time
 import pandas as pd
 
 path_tsv = sys.argv[1]
-
+k = sys.argv[2]
 if path_tsv.split('.')[1] != 'tsv':
     print("O input não é .tsv")
     sys.exit(1)
@@ -39,8 +39,8 @@ valores = list(d.values())
 # Converter a lista de valores para inteiros
 valores_int = [int(i) for i in valores]
 
-bins = list(range(0, max(valores_int) + 500, 500))  # Cria uma lista de bins de 0 até o máximo de seus dados, de 1000 em 1000
-labels = [f'{i}-{i+499}' for i in bins[:-1]]  # Cria rótulos para cada bin
+bins = list(range(0, max(valores_int) + k, k))  # Cria uma lista de bins de 0 até o máximo de seus dados, de 1000 em 1000
+labels = [f'{i}-{i+k-1}' for i in bins[:-1]]  # Cria rótulos para cada bin
 
 # Usar pd.cut para dividir seus dados em bins e contar a frequência de cada bin
 valores_series = pd.Series(valores_int)  # Transforma a lista em uma Series do pandas
